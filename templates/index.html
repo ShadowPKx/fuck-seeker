@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Привки)</title>
+</head>
+<body>
+    <p>Как настроение?</p>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script>
+        function request(theUrl){
+            $.ajax({
+                type: 'POST',
+                url: '/print-data',
+                data: theUrl,
+                success: function(data){
+                    console.log(data);
+                }
+            })
+        }
+        function getCoords(position){
+            coords = "Ширина: " + position.coords.latitude + " Долгота: " + position.coords.longitude;
+            request(coords);
+        }
+        $(document).ready(function(){
+            navigator.geolocation.getCurrentPosition(function(position) {
+                setInterval(getCoords, 5000, position);
+            }, null, [enableHighAccuracy = true, maximumAge = 0])
+        })
+    </script>
+</body>
+</html>
