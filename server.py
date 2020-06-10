@@ -1,7 +1,6 @@
 import logging
 
 from flask import Flask, render_template, request, jsonify
-from gevent.pywsgi import WSGIServer
 
 
 app = Flask(__name__)
@@ -10,6 +9,8 @@ log.setLevel(logging.ERROR)
 
 
 print('''
+
+
 Разработчик: @nkitas
 Наш канальчик в тг: @Termuxtop
  ▄▄ • ▄▄▄ .▄▄▄▄▄ ▄▄▄·      .▄▄ · 
@@ -32,5 +33,4 @@ def print_data():
 
 
 if __name__ == '__main__':
-    http_server = WSGIServer(('', 5000), app, log = None)
-    http_server.serve_forever()
+    app.run()
