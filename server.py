@@ -1,4 +1,5 @@
 import logging
+import os
 
 from flask import Flask, render_template, request, jsonify
 
@@ -8,9 +9,9 @@ log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
 
+os.system('cls' if os.name=='nt' else 'clear')
+
 print('''
-
-
 Разработчик: @nkitas
 Наш канальчик в тг: @Termuxtop
  ▄▄ • ▄▄▄ .▄▄▄▄▄ ▄▄▄·      .▄▄ · 
